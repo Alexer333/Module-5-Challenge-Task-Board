@@ -1,7 +1,6 @@
 // Retrieve tasks and nextId from localStorage
-let taskList = JSON.parse(localStorage.getItem("tasks"));
+let taskList = JSON.stringify(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
-const userTasks = 0;
 
 // The modal code stuff...
     //Get Modal
@@ -11,6 +10,7 @@ var btn = document.getElementById("btn btn-successs")
     //Close Modal
 var span = document.getElementsByClassName("submit")[0];
 
+let userTasks = 0;
 
 
 
@@ -56,7 +56,7 @@ function createTaskCard(task) {
     };
 
         const stringCard = localStorage.getItem('userTasks');
-        const newCards = JSON.parse(stringCard);
+        const newCards = JSON.parse(stringCard) || [];
         const placement = $('#todo-cards');
 
     if(newCards) {
@@ -74,10 +74,10 @@ function createTaskCard(task) {
             cardDesc.textContent = newCards[i].Description;
             cardDue.textContent = newCards[i].DueDate;
 
-            div.append(cardTitle);
-            div.append(cardDesc);
-            div.append(cardDue);
-            placement.append(div);
+            div.appendChild(cardTitle);
+            div.appendChild(cardDesc);
+            div.appendChild(cardDue);
+            placement.appendChild(div);
 
             console.log(cardTitle);
             console.log(cardDesc);
@@ -146,7 +146,7 @@ card.draggable({
 function handleAddTask(){
     // document.getElementById("todo-cards").innerHTML += "<tr><td>str</td></tr>";
 
-    
+
 
 }
 
